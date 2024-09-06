@@ -1,0 +1,15 @@
+services:
+  db:
+    container_name: teste_mongoDB
+    image: mongo:8.0-rc-noble
+    ports:
+      - 27017:27017
+    volumes:
+      - ./src:/app_backend/src
+    restart: always
+    healthcheck:
+      test: [ "CMD", "mongosh", "--host", "db", "--eval", "db.adminCommand('ping')" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
