@@ -28,6 +28,9 @@ class LinkedList:
 
     def __len__(self):
         return self.__length
+    
+    def get_length(self):
+        return self.__length
 
     def __get_node_at(self, position):
         pointer = self.head
@@ -67,10 +70,9 @@ class LinkedList:
         pointer = self.head
         if pointer:
             pointer = self.__get_node_at(position)
-        if pointer:
             value_returned = pointer.value
         return value_returned
-
+    
     def set_element_at(self, position, element):
         node = Node(element)
         value_returned = None
@@ -115,13 +117,18 @@ class LinkedList:
         return pointer
 
     def remove_last(self):
-        pointer = self.head
-        while pointer.next:
-            previus_node = pointer
-            pointer = pointer.next
-        previus_node.next = None
-        self.tail = previus_node
+        if self.tail is None:
+            return self.is_empty()
+        pointer = self.tail
+        if pointer == self.head:
+            self.head = None
+        if pointer.prev:
+            pointer.prev.next = None
+
+        self.tail = pointer.prev
+
         self.__length -= 1
+        return pointer
 
     def remove_at(self, position):
         pointer = self.head
@@ -167,14 +174,14 @@ class LinkedList:
         if len(linkdList) < 1:
             return linkdList
         filterd_list = LinkedList()
-        while linked_list:
+        while linkdList:
             current_node = linkdList.remove_first()
             if linkdList.index_of(current_node.value) == -1:
                 filterd_list.insert_last(current_node.value)
         print(filterd_list)
         return filterd_list
 
-linked_list = LinkedList()
+""" linked_list = LinkedList()
 
 linked_list.insert_first(1)
 linked_list.insert_first(2)
@@ -182,9 +189,9 @@ linked_list.insert_first(2)
 linked_list.insert_first(2)
 linked_list.insert_first(3)
 linked_list.insert_first(3)
-linked_list.insert_first(3)
+linked_list.insert_first(3) """
 
-linked_list.remove_duplicate_doubleList(linked_list)
+# linked_list.remove_duplicate_doubleList(linked_list)
 """ 
 
 

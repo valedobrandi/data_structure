@@ -1,7 +1,3 @@
-import traceback
-import sys
-
-
 class Stack:
     def __init__(self) -> None:
         self._data = list()
@@ -55,7 +51,7 @@ if __name__ == "__main__":
     print(content_stack.peek())
     # saída: 10, pois a função retorna o elemento que está sendo retirado
     print(content_stack.pop())
-    # saída: 9, pois, após o 10 ter sido removido, o 9 se tornou o elemento do topo da pilha
+    # saída: 9, pois, após o 10 ter sido removido,
     print(content_stack.peek())
     # saída: 9
     print(content_stack.size())
