@@ -5,3 +5,7 @@ data_structure/.venv
 node_modules
 classes/env
 .venv
+__pycache__
+.pytest_cache
+**/.pytest_cache
+**/__pycache__
