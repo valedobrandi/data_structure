@@ -90,3 +90,42 @@ def print_detail():
 
 
 print_detail()
+
+
+class Tv:
+    def __init__(
+        self,
+        tamanho,
+        volume=50,
+        canal=1,
+        ligada=False,
+    ) -> None:
+        self.__volume = (volume,)
+        self.__canal = (canal,)
+        self.tamanho = (tamanho,)
+        self.__ligada = ligada
+
+    def ligar_desligar(self):
+        self.ligada = not self.__ligada
+
+    @property
+    def volume(self):
+        return self.__volume
+
+    def aumentar_volume(self):
+        if self.__volume > 0 and self.__volume < 100:
+            self.__volume += 1
+
+    def diminuir_volume(self):
+        if self.__volume > 0 and self.__volume < 100:
+            self.__volume -= 1
+
+    @property
+    def canal(self):
+        return self.__canal
+
+    def modificar_canal(self, canal):
+        if canal > 1 and canal < 100:
+            self.__canal = canal
+            return
+        return ValueError
