@@ -16,8 +16,6 @@ class JokeModel(AbstractModel):
             return
         return random.choice(data)
 
-    def to_ditc(self):
-        return {
-            "_id": str(self.data["_id"]),
-            "joke": self.data["joke"],
-        }
+    def to_dict(self):
+        self.data["_id"] = str(self.data["_id"])
+        return str(self.data)

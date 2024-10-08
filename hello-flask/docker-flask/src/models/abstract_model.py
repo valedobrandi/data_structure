@@ -9,7 +9,9 @@ class AbstractModel:
 
     def save(self):
         result = self._collection.insert_one(self.data)
-        insert_document = self._collection.find_one({"_id": result.inserted_id})
+        insert_document = (
+            self._collection.find_one({"_id": result.inserted_id})
+            )
         self.data = insert_document
         return self.data
 
@@ -28,10 +30,14 @@ class AbstractModel:
 
     @classmethod
     def find(cls, query: dict = {}):
-        data = cls._collection.find({query})
+        data = cls._collection.find(query)
         return [cls(d) for d in data]
 
     @classmethod
     def find_one(cls, query: dict = {}):
-        data = cls._collection.find_one({query})
+        data = cls._collection.find_one(query)
         return cls(data) if data else None
+
+    def stringfy(self):
+        self.data["_id"] = str(self.data["_id"])
+        return str(self.data)
