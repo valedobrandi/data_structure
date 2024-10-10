@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>User listing</title>
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 30%;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+    <h1>User listing</h1>
+<table>
+  <tr>
+    <th>delete</th>
+    <th>edit</th>
+    <th>name</th>
+    <th>registration</th>
+  </tr>
+  {% for student in students_list %}
+  <tr>
+    <th>
+      <form 
+      action="{{ url_for('students.student_delete', student_id=student['_id']) }}" 
+      method="get">
+        <button type="submit">delete</button>
+      </form>
+    </th>
+    <th>
+      <form 
+      action="{{ url_for('students.student_edit', student_id=student['_id']) }}" 
+      method="get">
+        <button type="submit">Edit</button>
+      </form>
+    </th>
+    <th>{{student["name"]}}</th>
+    <th>{{student["registration"]}}</th>
+  </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
