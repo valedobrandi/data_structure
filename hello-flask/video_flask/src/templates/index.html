@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Videos Catalog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+  </head>
+  <body>
+    <h1>VideoTitles</h1>
+    <form action="/" method="POST">
+      <input type="text" name="titulo" placeholder="Enter video title">
+      <button type="submit">Search</button>
+    </form>
+    <section>
+      <ul>
+        {% for video in videos %}
+        <li>
+          <a href="/videos/{{ filme_id }}">
+            <img src="{{ filme_poster }}" alt="{{ video.titulo }} Poster">
+            <h2>{{ video.titulo }}</h2>
+            <p>Year: {{ video.ano }}</p>
+            <p>Diretor: {{ video.diretor }}</p>
+            <p>Gênero: {{ video.genero }}</p>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </body>
+</html>

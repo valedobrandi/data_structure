@@ -1,14 +1,14 @@
 services:
-  flask-api:
-    container_name: flask-api
-    build:
+  video-api:
+    container_name: video-flask
+    build: 
       args:
         - FLASK_ENV=dev
       context: .
     volumes:
       - ./src:/src
     ports:
-      - 8100:8100
+      - 8000:8000
     networks:
       - flask_net
     environment:
