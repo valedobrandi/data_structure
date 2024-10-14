@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% from 'bootstrap5/form.html' import render_form %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edit</title>
+    </head>
+    <body>
+        <h1>Edit</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto">
+                    <h1 class="pt-5 pb-2">Edit Registrarion</h1>
+                    <table>
+                        <tr>
+                            <th>{{ book["title"] }}</th>
+                            <th>{{ book["author"] }}</th>
+                            <th>{{ book["year"] }}</th>
+                        </tr>
+                    </table>
+                    <form
+                        action="{{ url_for('home_controller.edit', book_id=book['id']) }}"
+                        method="POST">
+                        {{ form.csrf_token() }}
+                        {{ render_form(form) }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
