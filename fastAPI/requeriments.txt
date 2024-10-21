@@ -1,0 +1,6 @@
+fatsapi
+uvicorn
+httpx
+pydantic-settings
+pymongo
+slowapi
