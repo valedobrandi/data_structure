@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ task.title }}
+{% endblock %}
+
+{% block content %}
+    {% if task.image %}
+        {% load static %}
+        <img src="{% static task.image.url %}" alt="">
+    {% endif %}
+    <h1>{{ task.title }}</h1>
+    <p>{{ task.description }}</p>
+    <p>{{ task.created_at|date }}</p>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Primeiro Template
+{% endblock %}
+
+{% block content %}
+    <h1> My fist Django template.</h1>
+    <h2> {{ company }} </h2>
+    {% for task in tasks%}
+        <h3>{{ task }}</h3>
+        <a href="{% url 'details-page' task.id %}">see details</a>
+        {% empty %}
+            <p>Task list in empty!</p>
+    {% endfor %}
+{% endblock %}

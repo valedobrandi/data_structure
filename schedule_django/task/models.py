@@ -11,7 +11,7 @@ class Task(models.Model):
         Alta = 'Alta'
 
     def __str__(self):
-        return f'{self.title}'
+        return f'{self.title} - {self.description} - {self.priority}'
 
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=100)
@@ -22,5 +22,6 @@ class Task(models.Model):
         choices=PriorityChoise.choices,
         default=PriorityChoise.Baixa
     )
+    image = models.ImageField(upload_to='task/img', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
