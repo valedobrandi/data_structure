@@ -1,0 +1,19 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: playlist-manager-backend-container
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/backend
+  database:
+    image: mysql:8.0
+    container_name: playlist-manager-mysql-container
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: playlist_manager_database
+    volumes:
+      - ./database/01_create_database.sql:/docker-entrypoint-initdb.d/01_create_database.sql
